@@ -1,10 +1,15 @@
-node {
-    stage('Build') {
-        sh 'echo "Hello World"'
-        sh '''
-            echo "Multiline shell steps works too"
-            ls -lah
-        '''
-    }
-}
+@Library(['kv-shared-library']) _
 
+pipeline {
+  agent none
+  stages {
+    stage ('Hello, World!') {
+      steps {
+        script {
+          hello 'Kiot'
+          hello 'Viet'
+        }
+      }
+    }
+  }
+}
